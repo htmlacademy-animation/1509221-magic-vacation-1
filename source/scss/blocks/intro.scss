@@ -87,12 +87,24 @@
 }
 
 .intro__message {
+  position: relative;
   flex: none;
   width: 50.9rem;
   max-width: 50%;
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+  transition-delay: .3s;
+  transform: translateY(100%);
+
+  @at-root {
+    .active & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   @media (min-width: $stop-scaling) {
     width: 509px;
