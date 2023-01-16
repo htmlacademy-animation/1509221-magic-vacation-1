@@ -48,7 +48,16 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
-    transition: width .3s, height .3s;
+    transition:
+      transform $time-standard,
+      width $time-standard $loaded-time-func $time-standard,
+      height $time-standard $loaded-time-func $time-standard;
+    @at-root {
+      body:not(.loaded) & {
+        width: 0;
+        height: 0;
+      }
+    }
   }
 
   svg {
@@ -63,8 +72,7 @@
     color: $c-purple;
 
     &::before {
-      width: 112.5%;
-      height: 112.5%;
+      transform: translate(-50%, -50%) scale(1.125);
     }
   }
 
